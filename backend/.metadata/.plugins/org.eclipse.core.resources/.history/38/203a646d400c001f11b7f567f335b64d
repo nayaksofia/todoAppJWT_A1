@@ -1,0 +1,9 @@
+Services We Create For:[CRUD] Operation
+-----------------------------------------------
+1. Retrieve all Todos for A User  →  GET/users/{user_name}/todos
+
+2. Delete a Todo of a user→ DELETE/users/{user_name}/todos/{todo_id}
+
+3. Edit/ Update a Todo→ PUT/users/{user_name}/todos/{todo_id}
+
+4. Create a new Todo→  POST/users/{user_name}/todos

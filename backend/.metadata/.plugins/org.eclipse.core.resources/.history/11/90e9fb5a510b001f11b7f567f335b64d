@@ -1,0 +1,12 @@
+package com.sofi.rest.webservices.restfulwebservices;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class TodoResource {
+
+	//To take the list of todos of one user 
+	public List<Todo> getAllTodos(String username){}
+}

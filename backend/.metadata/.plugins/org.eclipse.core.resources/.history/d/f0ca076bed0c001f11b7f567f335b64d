@@ -1,0 +1,49 @@
+package com.sofi.rest.webservices.restfulwebservices.todo;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@CrossOrigin(origins = "http://localhost:4200")
+@RestController
+public class TodoResource {
+
+	@Autowired
+	private TodoHardcodedService todoService; // Create a service
+
+	// To take the list of todos of one user
+	@GetMapping("/users/{username}/todos")
+	public List<Todo> getAllTodos(@PathVariable String username) {
+		return todoService.findAll();
+	}
+
+	// To update todos of one user
+	@PutMapping("/users/{username}/todos/{id}")
+	public Todo putTodo(@PathVariable String username, @PathVariable long id) {
+		return todoService.findById(id);
+	}
+
+	// Focus On Delete Method
+	// users/{username}/todos/{id}
+	@DeleteMapping("/users/{username}/todos/{id}")
+	public ResponseEntity<Void> deleteTodo(@PathVariable String username, @PathVariable long id) {
+		Todo todo = todoService.deleteById(id); // assign the statement to new local variable todo
+		if (todo != null) {
+			return ResponseEntity.noContent().build(); // ResponseEntity uses Builder Pattern
+		}
+
+		return ResponseEntity.notFound().build();
+	}
+
+}
+
+/*
+ * Deciding what status to use
+ */

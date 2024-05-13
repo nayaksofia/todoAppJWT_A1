@@ -1,0 +1,29 @@
+<h1>Login!</h1>
+<div class="container">
+    <div class="alert alert-warning"  *ngIf='invalidLogin'>{{errorMessage}}</div>
+    <div>
+
+        User Name: <input type="text" name="username" [(ngModel)]="username">
+        Password: <input type="password" name="password" [(ngModel)]="password">
+
+        <!-- <button (click)=handleLogin() class="btn btn-success">Login</button> -->
+        <!-- <button (click)=handleBasicLogin() class="btn btn-success">Login</button> -->
+        <button (click)=handleJWTAuthLogin() class="btn btn-success">Login</button>
+
+    </div>
+
+</div>
+
+
+
+
+<!--
+ Data Binding Approach:
+1. Two-Ways Data Binding: Banana In A Box Approach:[()] do binding in both the side
+ 1.1 [(ngModel)] = '....'  It is the part of FormsModule;Need to be import FormsModule in app.module.ts
+ 1.2 Angular direactives.
+ 2. Interpolation: {{username}}
+3. Event BInding: (click)= 'eventMethod()' 
+handleLogin() - Hard Coded Login Method
+handleBasicAuthLogin() - Not Hard Coded 
+-->
